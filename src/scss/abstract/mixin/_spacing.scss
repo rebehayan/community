@@ -1,0 +1,29 @@
+@use "../function" as *;
+@use "sass:meta";
+
+@mixin spacing($numbers) {
+  @if meta.type-of($numbers) != list {
+    @error "#{$numbers }는 리스트형 데이터여야 합니다.";
+  }
+
+  @each $number in $numbers {
+    .mt#{$number} {
+      margin-top: rem($number);
+    }
+    .ml#{$number} {
+      margin-left: rem($number);
+    }
+    .mr#{$number} {
+      margin-right: rem($number);
+    }
+    .mb#{$number} {
+      margin-bottom: rem($number);
+    }
+    .mx#{$number} {
+      margin-inline: rem($number);
+    }
+    .my#{$number} {
+      margin-block: rem($number);
+    }
+  }
+}

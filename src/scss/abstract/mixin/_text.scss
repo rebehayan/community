@@ -1,0 +1,17 @@
+@use "sass:map";
+
+@mixin text($mapName, $index) {
+  $fs: map.get($mapName, $index, "fontSize");
+  $color: map.get($mapName, $index, "color");
+  $fw: map.get($mapName, $index, "fontWeight");
+  $lh: map.get($mapName, $index, "lineHeight");
+  $ls: map.get($mapName, $index, "letterSpacing");
+
+  .#{map.get($mapName,$index, "class")} {
+    font-size: $fs;
+    color: var(--color, $color);
+    font-weight: $fw;
+    line-height: $lh;
+    letter-spacing: $ls;
+  }
+}

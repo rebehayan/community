@@ -1,0 +1,93 @@
+@use "sass:list";
+@use "../abstract/" as *;
+
+$kor: "Noto Sans CJK KR", Noto Sans KR, sans-serif;
+$textType: (
+  1: (
+    "class": text-lg,
+    "fontSize": rem(28),
+    "color": $gray900,
+    "fontWeight": 600,
+    "lineHeight": lh(28, 31.976),
+  ),
+  2: (
+    "class": text-md,
+    "fontSize": rem(23),
+    "color": $gray900,
+    "fontWeight": 600,
+    "lineHeight": lh(23, 26.266),
+  ),
+  3: (
+    "class": text-base,
+    "fontSize": rem(20),
+    "color": $gray900,
+    "fontWeight": 600,
+    "lineHeight": lh(20, 24.34),
+  ),
+  4: (
+    "class": text-sm,
+    "fontSize": rem(16),
+    "color": $gray900,
+    "fontWeight": 500,
+    "lineHeight": lh(16, 21.36),
+  ),
+  5: (
+    "class": text-xs,
+    "fontSize": rem(14),
+    "color": $gray900,
+    "fontWeight": 400,
+    "lineHeight": lh(14, 24),
+  ),
+  6: (
+    "class": text-xxs,
+    "fontSize": rem(13),
+    "color": $gray900,
+    "fontWeight": 400,
+    "lineHeight": lh(12, 24),
+  ),
+  7: (
+    "class": text-xxxs,
+    "fontSize": rem(12),
+    "color": $gray900,
+    "fontWeight": 500,
+    "letterSpacing": 0.72px,
+    "lineHeight": lh(12, 24),
+  ),
+);
+
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: none;
+}
+* {
+  font-family: $kor;
+}
+
+body {
+  font-size: 1rem;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+@layer Typography {
+  $textLength: list.length($textType);
+  @for $index from 1 through $textLength {
+    @include text($textType, $index);
+  }
+
+  .text-primary {
+    color: $primary;
+  }
+  .text-secondary {
+    color: $secondary;
+  }
+  .text-danger {
+    color: $orange400;
+  }
+  .text-warning {
+    color: $yellow400;
+  }
+  .text-success {
+    color: $green400;
+  }
+}

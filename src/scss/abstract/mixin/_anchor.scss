@@ -1,0 +1,11 @@
+@mixin anchor($direction, $target) {
+  @if $direction == "left" {
+    left: anchor(#{$target} left);
+  } @else if $direction == "top" {
+    top: anchor(#{$target} top);
+  } @else if $direction == "bottom" {
+    top: anchor(#{$target} bottom);
+  } @else if $direction == "right" {
+    left: anchor(#{$target} right);
+  }
+}

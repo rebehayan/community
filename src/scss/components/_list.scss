@@ -1,0 +1,55 @@
+@use "sass:map";
+@use "../abstract/" as *;
+
+$listStyle: (
+  1: (
+    "className": ".list-type4",
+    "marker": "dot",
+    "color": red,
+    "textType": null,
+    "width": 4,
+    "height": 4,
+    "radius": 100,
+    "margin": rem(10) rem(4) 0,
+  ),
+);
+
+@mixin listStyle($varName, $index) {
+  #{map.get($varName,$index, className)} {
+    color: map.get($varName, color);
+    @content;
+
+    @if map.get($varName, $index, textType) {
+      @extend #{map.get($varName, $index, textType)};
+    }
+
+    li {
+      display: grid;
+      grid-template-columns: min-content 1fr;
+      align-items: center;
+      &::before {
+        display: inline-block;
+        margin: map.get($varName, $index, margin);
+        align-self: start;
+
+        @if map.get($varName, $index, marker) == "※" or map.get($varName, $index, marker) == "*" {
+          content: map.get($varName, $index, marker);
+        } @else {
+          content: "";
+          width: rem(map.get($varName, $index, width));
+          height: rem(map.get($varName, $index, height));
+          background-color: map.get($varName, $index, color);
+          @if map.get($varName, $index, radius) {
+            border-radius: rem(map.get($varName, $index, radius));
+          }
+        }
+      }
+    }
+  }
+}
+
+@layer Components {
+  @layer List {
+    @include listStyle($listStyle, 1);
+  }
+}

@@ -1,0 +1,107 @@
+@use "../abstract/" as *;
+
+@layer Components {
+  @layer Sidebar {
+    .sidebar {
+      $width: rem(300);
+      $minWidth: rem(100);
+
+      @include position(f, left, 0, top, 0, 1000);
+      overflow: hidden;
+      height: 100vh;
+      width: $width;
+      background-color: $gray50;
+      transition: width 0.4s;
+      box-shadow: 0 rem(80) rem(20) rgba(0, 0, 0, 0.1);
+
+      &.toggle {
+        width: $minWidth;
+        .sidebar-top {
+          :not(.btn-menu) {
+            display: none;
+            opacity: 0;
+          }
+        }
+        b {
+          opacity: 0;
+          display: none;
+          @starting-style {
+            opacity: 1;
+            display: block;
+          }
+        }
+        .title {
+          display: flex;
+          align-items: center;
+          color: rgba(0, 0, 0, 0);
+          margin-left: rem(15);
+          &::before {
+            content: "";
+            width: rem(5);
+            aspect-ratio: 1;
+            background-color: $gray400;
+            border-radius: rem(100);
+          }
+        }
+      }
+
+      .inner-wrap {
+        width: $width;
+      }
+      .nav-aria {
+        padding: rem(30);
+      }
+      .title {
+        color: $gray500;
+        text-transform: uppercase;
+        letter-spacing: rem(3);
+        margin-top: rem(30);
+      }
+      .nav {
+        display: grid;
+        gap: rem(14);
+        margin-top: rem(14);
+        a {
+          display: grid;
+          grid-template-columns: min-content 1fr;
+          align-items: center;
+          gap: rem(10);
+          &:hover {
+            svg,
+            b {
+              color: $primary;
+            }
+          }
+        }
+        span {
+          padding: rem(11);
+          width: rem(40);
+          box-sizing: border-box;
+          aspect-ratio: 1;
+          box-shadow: 0 3px 12px rgba($black, 0.09);
+          border-radius: rem(8);
+        }
+        b {
+          transition: 0.5s allow-discrete;
+        }
+        svg {
+          width: 100%;
+          height: 100%;
+          color: $gray600;
+          transition: 0.5s;
+        }
+      }
+    }
+
+    .sidebar-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: rem(10);
+      height: rem(73);
+      white-space: nowrap;
+      background-color: $white;
+      box-shadow: 0 rem(3) rem(16) rgba(0, 0, 0, 0.02);
+    }
+  }
+}

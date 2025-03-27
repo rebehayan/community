@@ -1,0 +1,146 @@
+@use "sass:list";
+@use "../abstract/" as *;
+
+$buttonSize: (
+  1: (
+    "class": base,
+    "fontSize": rem(11),
+    "height": rem(41),
+    "border": 1px,
+    "padding": rem(29.7),
+  ),
+  2: (
+    "class": lg,
+    "fontSize": rem(28),
+    "height": rem(85),
+    "border": 1px,
+    "padding": rem(12),
+  ),
+);
+$buttonColor: (
+  1: (
+    "class": primary,
+    "borderColor": $primary,
+    "bgColor": $primary,
+    "color": $white,
+    "hoverBgColor": $blue500,
+  ),
+  2: (
+    "class": secondary,
+    "borderColor": $secondary,
+    "bgColor": $secondary,
+    "color": $white,
+    "hoverBgColor": $orange500,
+  ),
+  3: (
+    "class": white-outline,
+    "borderColor": $gray300,
+    "bgColor": $white,
+    "color": $gray900,
+    "hoverBorderColor": $primary,
+    "hoverBgColor": $white,
+    "hoverColor": $primary,
+  ),
+);
+$buttonIcon: (
+  1: (
+    "direction": a,
+    "width": rem(22),
+    "height": rem(21),
+    "bgImg": "ico_arrow_right.png",
+  ),
+  2: (
+    "direction": a,
+    "width": rem(31),
+    "height": rem(29),
+    "bgImg": "ico_arrow_right.png",
+  ),
+);
+
+@layer Components {
+  @layer Button {
+    .btn {
+      display: inline-grid;
+      grid-template-columns: 1fr min-content;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      text-decoration: none;
+      border-radius: rem(100);
+      &[class*="ico"] {
+        gap: rem(15);
+      }
+
+      @for $i from 1 through list.length($buttonSize) {
+        @include buttonSize($buttonSize, $i);
+      }
+      @for $i from 1 through list.length($buttonColor) {
+        @include buttonColor($buttonColor, $i);
+      }
+      @for $i from 1 through list.length($buttonIcon) {
+        @include buttonIcon($buttonIcon, $i);
+      }
+
+      &.rounded {
+        border-radius: rem(100);
+      }
+      // &.mw {
+      //   min-width: rem(209);
+      // }
+    }
+
+    .btn-more {
+      position: relative;
+      display: inline-block;
+      height: rem(21);
+      padding-right: rem(30);
+      align-content: center;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: 0.4s;
+      &:hover {
+        color: $primary;
+        &::after {
+          translate: 100%;
+          opacity: 1;
+        }
+        &::before {
+          translate: 100%;
+          opacity: 0;
+        }
+      }
+      &::after,
+      &::before {
+        content: "";
+        height: rem(21);
+        aspect-ratio: 1;
+        transition: 0.4s;
+      }
+      &::before {
+        $svg: '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10 10-4.48 10-10zM4 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8-8-3.58-8-8zm12 0-4 4-1.41-1.41L12.17 13H8v-2h4.17l-1.59-1.59L12 8l4 4z"></path></svg>';
+        @include position(a, right, 0, top, 50%);
+        @include svg-background($svg);
+      }
+      &::after {
+        $svg: '<svg stroke="currentColor" fill="#{$primary}" stroke-width="0" viewBox="0 0 24 24" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10 10-4.48 10-10zM4 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8-8-3.58-8-8zm12 0-4 4-1.41-1.41L12.17 13H8v-2h4.17l-1.59-1.59L12 8l4 4z"></path></svg>';
+
+        @include svg-background($svg);
+        @include position(a, right, rem(21), top, 50%);
+        opacity: 0;
+      }
+    }
+    .btn-search {
+      $svg: '<svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" id="search" x="0px" y="0px" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path d="M20.031,20.79c0.46,0.46,1.17-0.25,0.71-0.7l-3.75-3.76c1.27-1.41,2.04-3.27,2.04-5.31 c0-4.39-3.57-7.96-7.96-7.96s-7.96,3.57-7.96,7.96c0,4.39,3.57,7.96,7.96,7.96c1.98,0,3.81-0.73,5.21-1.94L20.031,20.79z M4.11,11.02c0-3.84,3.13-6.96,6.96-6.96c3.84,0,6.96,3.12,6.96,6.96c0,3.84-3.12,6.96-6.96,6.96C7.24,17.98,4.11,14.86,4.11,11.02 z"></path></g></svg>';
+      @include svg-background($svg);
+      width: rem(20);
+      aspect-ratio: 1;
+    }
+    .btn-menu {
+      $svg: '<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+      @include svg-background($svg);
+      width: rem(20);
+      aspect-ratio: 1;
+    }
+  }
+}

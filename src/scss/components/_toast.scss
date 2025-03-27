@@ -1,0 +1,22 @@
+@use "../abstract/" as *;
+
+.toast {
+  @include position(f, left, 50%, bottom, rem(10), 1000);
+  background-color: $primary;
+  color: $white;
+  display: none;
+  padding: rem(5) rem(10);
+  border-radius: rem(100);
+  opacity: 0;
+  translate: 0 100%;
+  transition: 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) allow-discrete;
+  &.show {
+    display: block;
+    opacity: 1;
+    translate: 0 0;
+    @starting-style {
+      opacity: 0;
+      translate: 0 100%;
+    }
+  }
+}

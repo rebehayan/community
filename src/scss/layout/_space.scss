@@ -1,0 +1,40 @@
+@use "../abstract/" as *;
+
+$mt: (25, 36, 40, 55, 58, 60, 70, 80, 85, 115, 120);
+$pt: (60, 85, 120);
+$pb: (0, 115, 120);
+
+@layer Space {
+  .fullsize {
+    width: 100%;
+  }
+  body {
+    padding-right: rem(30);
+    padding-bottom: rem(30);
+  }
+  .px36 {
+    padding-inline: rem(36);
+  }
+  .px56 {
+    padding-inline: rem(56);
+  }
+  @layer Margin {
+    @each $size in $mt {
+      .mt#{$size} {
+        margin-top: rem($size);
+      }
+    }
+  }
+  @layer Padding {
+    @each $size in $pt {
+      .pt#{$size} {
+        padding-top: rem($size);
+      }
+    }
+    @each $size in $pb {
+      .pb#{$size} {
+        padding-bottom: rem($size);
+      }
+    }
+  }
+}

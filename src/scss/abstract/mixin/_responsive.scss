@@ -1,0 +1,22 @@
+$mobile: 420px;
+$mobileBase: 720px;
+$tablet: 1024px;
+$web: 1280px;
+
+@mixin Talbet {
+  @media (#{$mobile} < width < #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin Mobile {
+  @media (width < #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin Web {
+  @media (width >= #{$mobileBase}) {
+    @content;
+  }
+}

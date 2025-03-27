@@ -1,0 +1,10 @@
+@use "../abstract/" as *;
+
+@layer Components {
+  .search-type1 {
+    position: relative;
+    button {
+      @include position(a, right, rem(10), top, 50%);
+    }
+  }
+}

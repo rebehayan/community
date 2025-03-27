@@ -1,0 +1,8 @@
+@mixin a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  border: 0;
+  width: 0;
+  height: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}

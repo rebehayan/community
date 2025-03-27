@@ -1,0 +1,60 @@
+@use "../abstract/" as *;
+
+@layer Components {
+  .profile {
+    anchor-name: --profile;
+    display: inline-flex;
+    align-items: center;
+    gap: rem(10);
+    width: auto;
+    height: auto;
+    white-space: nowrap;
+
+    svg {
+      width: rem(15);
+      height: rem(15);
+    }
+  }
+  #profile {
+    &.block {
+      position: fixed;
+      inset: anchor(--profile bottom) anchor(--profile right) auto anchor(--profile left);
+      width: auto;
+      opacity: 0;
+      translate: 0 0;
+      transition: 0.5s cubic-bezier(0.895, 0.03, 0.685, 0.22) allow-discrete;
+      padding: 0;
+      border: none;
+      border-radius: rem(10);
+      &:popover-open:not(dialog) {
+        display: grid;
+        opacity: 1;
+        translate: 0 0;
+        @starting-style {
+          opacity: 0;
+          translate: 0 rem(30);
+        }
+      }
+      a {
+        display: flex;
+        align-items: center;
+        gap: rem(7);
+        padding: rem(10) rem(20);
+        &:focus,
+        &:hover {
+          color: $primary;
+          .text-xs {
+            color: inherit;
+          }
+        }
+        + a {
+          border-top: 1px solid $gray300;
+        }
+      }
+      svg {
+        width: rem(15);
+        height: rem(15);
+      }
+    }
+  }
+}

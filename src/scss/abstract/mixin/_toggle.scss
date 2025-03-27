@@ -1,0 +1,70 @@
+@mixin toggle($width, $height, $bgColor, $buttonColor, $fontSize: null) {
+  // 유효성 체크
+  @if type-of($value: $width) != number {
+    @error "#{$width} is not a number. 👉 가로크기를 넣으세요.";
+  } @else if type-of($value: $height) != number {
+    @error "#{$height} is not a number. 👉 세로크기를 넣으세요.";
+  } @else if type-of($value: $bgColor) != color {
+    @error "#{$bgColor} is not a color. 👉 배경색을 넣으세요.";
+  } @else if type-of($value: $buttonColor) != color {
+    @error "#{$buttonColor} is not a color. 👉 버튼색을 넣으세요.";
+  } @else if type-of($value: $fontSize) != number and type-of($value: $fontSize) == null {
+    @error "#{$fontSize} is not a number. 👉 폰트크기를 넣으세요.";
+  }
+
+  $distance: $width - $height;
+
+  input {
+    @include a11y-hidden;
+    &:checked {
+      + label {
+        &::before {
+          transform: translateX($distance);
+        }
+      }
+    }
+  }
+  label {
+    align-items: center;
+    position: relative;
+    font-size: 0;
+    line-height: 1;
+    @content;
+
+    @if $fontSize {
+      display: flex;
+      justify-content: space-between;
+      span {
+        font-size: $fontSize;
+      }
+    } @else {
+      display: inline-flex;
+      justify-content: flex-end;
+      span {
+        @include a11y-hidden;
+      }
+    }
+
+    &::after {
+      content: "";
+      width: $width;
+      height: $height;
+      border-radius: 1000px;
+      background-color: $bgColor;
+      cursor: pointer;
+    }
+
+    &::before {
+      $margin: calc(($height / 2));
+      @include position(a, left, $distance, top, 50%);
+      content: "";
+      width: $height;
+      height: $height;
+      margin-top: -$margin;
+      border-radius: 1000px;
+      background-color: $buttonColor;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use "../abstract/" as *;
+
+@layer Layout {
+  @layer Header {
+    .header {
+      @include position(f, left, 0, top, 0, 1000);
+      display: grid;
+      grid-template-columns: rem(100) 1fr min-content;
+      align-items: center;
+      width: 100%;
+      background-color: $white;
+      padding-block: rem(10);
+      padding-inline: rem(30);
+      box-sizing: border-box;
+      box-shadow: 0 rem(3) rem(16) rgba(0, 0, 0, 0.02);
+      .search-type1 {
+        justify-self: start;
+      }
+    }
+  }
+}

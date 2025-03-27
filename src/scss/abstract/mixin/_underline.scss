@@ -1,0 +1,10 @@
+// 아래위치, 선굵기, 선색
+@mixin underline($bottom, $borderWidth, $borderColor) {
+  position: relative;
+  &::after {
+    @include position(a, left, 0, bottom, $bottom);
+    content: "";
+    width: 100%;
+    border-bottom: $borderWidth solid $borderColor;
+  }
+}

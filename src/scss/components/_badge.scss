@@ -1,0 +1,60 @@
+@use "sass:list";
+@use "../abstract/" as *;
+
+$badgeSize: (
+  1: (
+    "class": base,
+    "fontSize": rem(10),
+    "height": rem(24),
+    "border": 1px,
+    "padding": rem(16),
+  ),
+);
+$badgeColor: (
+  1: (
+    "class": primary,
+    "borderColor": $primary,
+    "bgColor": $primary,
+    "color": $white,
+  ),
+  2: (
+    "class": "green",
+    "borderColor": $green400,
+    "bgColor": $green400,
+    "color": $white,
+  ),
+  3: (
+    "class": "red",
+    "borderColor": $orange400,
+    "bgColor": $orange400,
+    "color": $white,
+  ),
+  4: (
+    "class": "yellow",
+    "borderColor": $yellow400,
+    "bgColor": $yellow400,
+    "color": $white,
+  ),
+);
+
+@layer Components {
+  @layer Badge {
+    .badge {
+      display: inline-grid;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      border-radius: rem(100);
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+
+      @for $i from 1 through list.length($badgeSize) {
+        @include badgeSize($badgeSize, $i);
+      }
+      @for $i from 1 through list.length($badgeColor) {
+        @include badgeColor($badgeColor, $i);
+      }
+    }
+  }
+}

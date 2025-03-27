@@ -1,0 +1,11 @@
+@use "../abstract/" as *;
+
+@layer Components {
+  @layer Logo {
+    .logo {
+      img {
+        width: rem(40);
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@use "../abstract/" as *;
+
+@layer Components {
+  @layer Tab {
+    .tab-type1 {
+      $offBorderColor: $gray300;
+
+      display: inline-flex;
+      gap: rem(20);
+      background: linear-gradient(to bottom, $offBorderColor, $offBorderColor) no-repeat bottom / 100% 1px;
+      button {
+        font-size: rem(13);
+        font-weight: 500;
+        color: $gray900;
+        background-color: transparent;
+        padding-bottom: rem(20);
+        border-bottom: 1px solid $offBorderColor;
+      }
+      [aria-selected="true"] {
+        button {
+          color: $secondary;
+          border-color: $secondary;
+        }
+      }
+    }
+  }
+}

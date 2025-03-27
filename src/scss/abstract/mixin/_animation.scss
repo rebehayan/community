@@ -1,0 +1,9 @@
+@mixin animation($state, $count: infinite) {
+  $name: ani-#{unique-id()};
+
+  animation-name: $name $state $count;
+
+  @keyframes #{$name} {
+    @content;
+  }
+}

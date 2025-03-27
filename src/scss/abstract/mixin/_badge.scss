@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "../mixin/background" as *;
+
+// 뱃지크기정의
+@mixin badgeSize($mapName, $i) {
+  $fs: map.get($mapName, $i, fontSize);
+  $height: map.get($mapName, $i, height);
+  $border: map.get($mapName, $i, border) solid;
+  $px: map.get($mapName, $i, padding);
+
+  &.#{map.get($mapName, $i, class)} {
+    font-size: $fs;
+    height: $height;
+    border: $border;
+    padding-inline: $px;
+  }
+}
+// 뱃지색상정의
+@mixin badgeColor($mapName, $i) {
+  &.#{map.get($mapName, $i, class)} {
+    border-color: map.get($mapName, $i, borderColor);
+    background-color: map.get($mapName, $i, bgColor);
+    color: map.get($mapName, $i, color);
+    transition: 0.4s;
+  }
+}
