@@ -1,5 +1,36 @@
 @use "../abstract/" as *;
 
-caption {
-  @include a11y-hidden;
+@layer Components {
+  caption {
+    @include a11y-hidden;
+  }
+  .table-type1 {
+    border: 1px solid $gray300;
+    background-color: $white;
+    thead {
+      th {
+        padding: rem(15) rem(20);
+        background-color: $gray100;
+        font-size: rem(12);
+        font-weight: 400;
+        color: $gray900;
+      }
+    }
+    tbody {
+      td {
+        padding: rem(15) rem(20);
+        font-size: rem(14);
+        color: $gray500;
+        text-align: center;
+        &:has(a) {
+          text-align: left;
+          color: $gray900;
+          font-size: rem(16);
+        }
+      }
+      tr {
+        border-top: 1px solid $gray300;
+      }
+    }
+  }
 }

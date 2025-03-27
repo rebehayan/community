@@ -51,5 +51,11 @@ $listStyle: (
 @layer Components {
   @layer List {
     @include listStyle($listStyle, 1);
+
+    .tag-list {
+      display: flex;
+      gap: rem(5);
+      flex-wrap: wrap;
+    }
   }
 }

@@ -35,6 +35,12 @@ $badgeColor: (
     "bgColor": $yellow400,
     "color": $white,
   ),
+  5: (
+    "class": "white-outline",
+    "borderColor": $gray700,
+    "bgColor": $white,
+    "color": $gray700,
+  ),
 );
 
 @layer Components {

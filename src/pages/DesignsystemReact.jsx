@@ -17,6 +17,8 @@ import Dialog from "../components/Molecules/Dialog";
 import Toast from "../components/Molecules/Toast";
 import Portal from "../util/Portal";
 import Profile from "../components/Organisms/Profile";
+import Table from "../components/Molecules/Table";
+import { dummyData } from "../data/table";
 
 const optionArray = [
   {
@@ -27,6 +29,14 @@ const optionArray = [
     title: "선택2",
     value: "option2",
   },
+];
+
+const tableColmns = [
+  { th: "제목", key: "title", width: "30%" },
+  { th: "태그", key: "tags", width: "20%" },
+  { th: "해결", key: "state", width: "10%" },
+  { th: "조회수", key: "hit", width: "10%" },
+  { th: "작성자", key: "writer", width: "10%" },
 ];
 
 const tabNav = ["탭메뉴1", "탭메뉴2", "탭메뉴3"];
@@ -148,6 +158,7 @@ export default function DesignsystemReact() {
       <Badge color="green">green</Badge>
       <Badge color="red">red</Badge>
       <Badge color="yellow">yellow</Badge>
+      <Badge color="white-outline">white-outline</Badge>
 
       <Text tag="h3" size="md">
         Avatar
@@ -171,6 +182,17 @@ export default function DesignsystemReact() {
         <div>탭 2의 내용</div>
         <div>탭 3의 내용</div>
       </Tab>
+      <ul className="tag-list">
+        <li>
+          <Badge color="white-outline">TAG</Badge>
+        </li>
+        <li>
+          <Badge color="white-outline">TAG</Badge>
+        </li>
+        <li>
+          <Badge color="white-outline">TAG</Badge>
+        </li>
+      </ul>
 
       <Button onClick={handleDialogOpen} color="primary" size="base">
         팝업열기
@@ -195,6 +217,27 @@ export default function DesignsystemReact() {
       <Portal selector="#toast">
         <Toast state={toast} message="안녕하세요" onClose={() => setToast(false)} />
       </Portal>
+      <Table style="type1" caption="All Topics" colmns={tableColmns}>
+        {dummyData.map(({ id, title, tags, state, hit, writer }) => (
+          <tr key={id}>
+            <td>
+              <Link to={`/topicview/${id}`}>{title}</Link>
+            </td>
+            <td>
+              <ul className="tag-list">
+                {tags.map((tag, index) => (
+                  <li key={index}>
+                    <Badge color="white-outline">{tag}</Badge>
+                  </li>
+                ))}
+              </ul>
+            </td>
+            <td>{state}</td>
+            <td>{hit}</td>
+            <td>{writer}</td>
+          </tr>
+        ))}
+      </Table>
 
       <Text tag="h2" size="lg" color="primary">
         Organisms

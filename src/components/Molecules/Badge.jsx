@@ -2,7 +2,7 @@ import React from "react";
 
 /**
  * @param {Object} props
- * @param {"primary" | "green" | "red" | "yellow"} [props.color] - 텍스트 색상
+ * @param {"primary" | "green" | "red" | "yellow" | "white-outline"} [props.color] - 텍스트 색상
  * @param {React.ReactNode} props.children - 내용
  */
 
