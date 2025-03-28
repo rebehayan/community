@@ -1,26 +1,21 @@
-import React, { useId, useState } from "react";
+import React, { useId } from "react";
 
 /**
  * @param {Object} props
  * @param {"text" | "number" | "tel" | "email" | "url" | "search" | "password"} [props.type] - 아바타 크기
  */
 
-export default function Input({ label, value, placeholder, onChange, type, ...props }) {
+export default function Input({ label, value, placeholder, onChange, type, error, ...props }) {
   const id = useId();
-  const [isValid, setIsValid] = useState(true);
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    onChange(value);
-
-    setIsValid(value.trim() !== "");
+    onChange?.(e.target.name, e.target.value);
   };
 
   return (
-    <div>
+    <div className="form-row">
       {label && <label htmlFor={id}>{label}</label>}
-      <input type={type ? type : "text"} className={`input ${!isValid && "error"}`} placeholder={placeholder} id={id} value={value} onChange={handleChange} {...props} />
-      {!isValid && <span className="text-danger">{label}값을 입력해주세요.</span>}
+      <input type={type ? type : "text"} className={`input ${error && "error"}`} placeholder={placeholder} id={id} value={value} onChange={handleChange} {...props} />
     </div>
   );
 }

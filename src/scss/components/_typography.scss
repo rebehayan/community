@@ -90,4 +90,10 @@ body {
   .text-success {
     color: $green400;
   }
+
+  .content-heading {
+    padding-bottom: rem(20);
+    margin-bottom: rem(30);
+    border-bottom: 1px solid $gray300;
+  }
 }

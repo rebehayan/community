@@ -2,5 +2,15 @@
 
 @layer Layout {
   @layer Footer {
+    .footer {
+      font-size: rem(12);
+      color: $gray500;
+      text-transform: uppercase;
+      letter-spacing: rem(1);
+      margin-block: rem(50);
+      a {
+        color: $primary;
+      }
+    }
   }
 }

@@ -4,11 +4,11 @@ export default function Select({ label, onChange, options, ...props }) {
   const id = useId();
 
   const handleChange = (e) => {
-    onChange(e.target.value);
+    onChange?.(e.target.name, e.target.value);
   };
 
   return (
-    <div>
+    <div className="form-row">
       {label && <label htmlFor={id}>{label}</label>}
       <select id={id} onChange={handleChange} className="select" {...props}>
         {options.map((item, index) => (

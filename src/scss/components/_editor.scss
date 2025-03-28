@@ -1,0 +1,16 @@
+@use "../abstract/" as *;
+
+@layer Components {
+  .md-editor {
+    .cm-gutters {
+      font-size: rem(12);
+    }
+    .cm-gutterElement {
+      font-size: rem(14);
+      line-height: 1;
+    }
+    .cm-content {
+      font-size: rem(14);
+    }
+  }
+}

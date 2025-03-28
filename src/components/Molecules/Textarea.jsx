@@ -15,7 +15,7 @@ export default function Textarea({ label, value, maxLength, onChange, placeholde
     }
   };
   return (
-    <div>
+    <div className="form-row">
       {label && <label htmlFor={id}>{label}</label>}
       <textarea value={value || ""} style={isHeight} id={id} className="textarea" maxLength={maxLength} onChange={handleChange} placeholder={placeholder}></textarea>
       {maxLength && (

@@ -19,6 +19,10 @@ import Portal from "../util/Portal";
 import Profile from "../components/Organisms/Profile";
 import Table from "../components/Molecules/Table";
 import { dummyData } from "../data/table";
+import BoardWrite from "../components/Organisms/BoardWrite";
+import Heading from "../components/Molecules/Heading";
+import Editor from "../components/Molecules/Editor";
+import MDViewer from "../components/Molecules/MDViewer";
 
 const optionArray = [
   {
@@ -48,6 +52,7 @@ export default function DesignsystemReact() {
   const [isRadioChecked, setIsRadioChecked] = useState("option1");
   const [toast, setToast] = useState(false);
   const [dialog, setdialog] = useState(false);
+  const [editorValue, setEditorValue] = useState("");
 
   const handleChange = (value) => {
     setIsValidInput(value);
@@ -87,6 +92,10 @@ export default function DesignsystemReact() {
   };
   const handleDialogClose = () => {
     setdialog(false);
+  };
+
+  const handleEditor = (value) => {
+    setEditorValue(value);
   };
 
   return (
@@ -133,6 +142,7 @@ export default function DesignsystemReact() {
       <Text tag="h2" size="lg" color="primary">
         Molecules
       </Text>
+      <Heading level={2} text="Post Issue" />
       <Text tag="h3" size="md">
         Button
       </Text>
@@ -238,12 +248,15 @@ export default function DesignsystemReact() {
           </tr>
         ))}
       </Table>
+      <Editor value={editorValue} onChange={handleEditor} />
+      <MDViewer height="20rem" markdown={editorValue} />
 
       <Text tag="h2" size="lg" color="primary">
         Organisms
       </Text>
       <Search onSubmit={handleSearch} />
       <Profile />
+      <BoardWrite />
       <br />
       <br />
       <br />
