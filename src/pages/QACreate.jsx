@@ -122,7 +122,7 @@ export default function QACreate() {
           <form onSubmit={handleSubmit}>
             <Input type="text" placeholder="제목을 입력하세요." name="title" label="제목" value={formData.title} error={false} onChange={handleForm} />
             <Select label="카테고리" options={selectCategory} name="category" onChange={handleForm} value={formData.category} />
-            <Editor name="description" onChange={handleForm} />
+            <Editor label="내용" name="description" onChange={handleForm} height="40rem" />
             <div className="mt30 align both">
               <Button color="white-outline" size="base" type="button" onClick={() => history.back()}>
                 목록

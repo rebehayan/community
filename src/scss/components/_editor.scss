@@ -2,6 +2,8 @@
 
 @layer Components {
   .md-editor {
+    border: 1px solid $gray300;
+
     .cm-gutters {
       font-size: rem(12);
     }
@@ -11,6 +13,9 @@
     }
     .cm-content {
       font-size: rem(14);
+    }
+    .md-editor-fullscreen & {
+      inset: 103px 30px 30px 130px !important;
     }
   }
 }

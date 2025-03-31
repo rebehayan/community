@@ -3,6 +3,7 @@ import Button from "../components/Molecules/Button";
 import useUpdateList from "../util/useUpdateList";
 import Table from "../components/Molecules/Table";
 import Badge from "../components/Molecules/Badge";
+import { formatToISODate } from "../util/dateFormatter";
 
 const tableColmns = [
   { th: "No.", key: "no", width: "10rem" },
@@ -27,18 +28,20 @@ export default function QnAa() {
     <>
       <div className="text-base">Q&A</div>
       <Table style="type1 mt30" caption="All Topics" colmns={tableColmns}>
-        {data.map(({ id, title, category, created_at }) => (
-          <tr key={id}>
-            <td>{id}</td>
-            <td>
-              <Link to={`/topicview/${id}`}>{title}</Link>
-            </td>
-            <td>
-              <Badge color="white-outline">{category}</Badge>
-            </td>
-            <td>{new Date(created_at).toLocaleDateString()}</td>
-          </tr>
-        ))}
+        {data
+          .sort((a, b) => b.id - a.id)
+          .map(({ id, title, category, created_at }) => (
+            <tr key={id}>
+              <td>{id}</td>
+              <td>
+                <Link to={`/topicview/${id}`}>{title}</Link>
+              </td>
+              <td>
+                <Badge color="white-outline">{category}</Badge>
+              </td>
+              <td>{formatToISODate(created_at)}</td>
+            </tr>
+          ))}
       </Table>
       <div className="align right mt20">
         <Button onClick={handleWrite} color="primary" size="base">
