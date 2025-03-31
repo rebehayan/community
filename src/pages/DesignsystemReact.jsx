@@ -19,7 +19,6 @@ import Portal from "../util/Portal";
 import Profile from "../components/Organisms/Profile";
 import Table from "../components/Molecules/Table";
 import { dummyData } from "../data/table";
-import BoardWrite from "../components/Organisms/BoardWrite";
 import Heading from "../components/Molecules/Heading";
 import Editor from "../components/Molecules/Editor";
 import MDViewer from "../components/Molecules/MDViewer";
@@ -256,7 +255,6 @@ export default function DesignsystemReact() {
       </Text>
       <Search onSubmit={handleSearch} />
       <Profile />
-      <BoardWrite />
       <br />
       <br />
       <br />

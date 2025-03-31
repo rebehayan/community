@@ -16,12 +16,12 @@ export default function Sidebar() {
   };
   const SidebarShow = () => {
     if (!sidebarRef.current.classList.contains("on")) {
-      sidebarRef.current.classList.remove("toggle");
+      sidebarRef.current.classList.add("toggle");
     }
   };
   const SidebarHide = () => {
     if (!sidebarRef.current.classList.contains("on")) {
-      sidebarRef.current.classList.add("toggle");
+      sidebarRef.current.classList.remove("toggle");
     }
   };
 
@@ -31,7 +31,7 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <div className="sidebar toggle" ref={sidebarRef} onMouseEnter={SidebarShow} onMouseLeave={SidebarHide}>
+    <div className="sidebar" ref={sidebarRef} onMouseEnter={SidebarShow} onMouseLeave={SidebarHide}>
       <div className="sidebar-top">
         <Logo />
         <Text size="sm">Rebehayan Community</Text>
