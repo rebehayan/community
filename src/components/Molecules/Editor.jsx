@@ -1,7 +1,7 @@
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import React, { useState } from "react";
 
-export default function Editor({ label, name, height = "20rem", onChange, ...props }) {
+export default function Editor({ label, name, height = "20rem", onChange, ref, ...props }) {
   const [markdown, setMarkdown] = useState("");
   const handleChange = (value) => {
     setMarkdown(value);
@@ -13,9 +13,9 @@ export default function Editor({ label, name, height = "20rem", onChange, ...pro
       <MarkdownEditor
         value={markdown}
         height={height}
-        visibleDragbar={false}
         onChange={handleChange}
-        components={{ img: ({ ...props }) => <img style={{ maxWidth: "100%" }} {...props} alt="" /> }}
+        visible={true}
+        components={{ img: ({ ...props }) => <img style={{ maxWidth: "100%" }} {...props} ref={ref} alt="" /> }}
         {...props}
       />
     </div>

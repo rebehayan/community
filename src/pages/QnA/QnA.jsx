@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../components/Molecules/Button";
-import useUpdateList from "../util/useUpdateList";
-import Table from "../components/Molecules/Table";
-import Badge from "../components/Molecules/Badge";
-import { formatToISODate } from "../util/dateFormatter";
+import Button from "../../components/Molecules/Button";
+import useUpdateList from "../../util/useUpdateList";
+import Table from "../../components/Molecules/Table";
+import Badge from "../../components/Molecules/Badge";
+import { formatToISODate } from "../../util/dateFormatter";
 
 const tableColmns = [
   { th: "No.", key: "no", width: "10rem" },
@@ -12,7 +12,7 @@ const tableColmns = [
   { th: "작성일", key: "date", width: "15rem" },
 ];
 
-export default function QnAa() {
+export default function QnA() {
   const navigate = useNavigate();
 
   const { data, error, loading } = useUpdateList("qna");
@@ -26,7 +26,7 @@ export default function QnAa() {
 
   return (
     <>
-      <div className="text-base">Q&A</div>
+      <div className="text-base">질의 응답</div>
       <Table style="type1 mt30" caption="All Topics" colmns={tableColmns}>
         {data
           .sort((a, b) => b.id - a.id)
@@ -34,7 +34,7 @@ export default function QnAa() {
             <tr key={id}>
               <td>{id}</td>
               <td>
-                <Link to={`/topicview/${id}`}>{title}</Link>
+                <Link to={`/qna/${id}`}>{title}</Link>
               </td>
               <td>
                 <Badge color="white-outline">{category}</Badge>

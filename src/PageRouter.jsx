@@ -1,10 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
-import QnA from "./pages/QnA";
+import QnA from "./pages/QnA/QnA";
 import Designsystem from "./pages/Designsystem";
 import DesignsystemReact from "./pages/DesignsystemReact";
-import QACreate from "./pages/QACreate";
+import QACreate from "./pages/QnA/QACreate";
+import QnAView from "./pages/QnA/QnAView";
 
 export default function PageRouter() {
   return (
@@ -13,6 +14,7 @@ export default function PageRouter() {
         <Route path="/" element={<Main />} />
         <Route path="/qna" element={<QnA />} />
         <Route path="/qna/write" element={<QACreate />} />
+        <Route path="/qna/:id" element={<QnAView />} />
         <Route path="/designsystem" element={<Designsystem />} />
         <Route path="/designsystem-react" element={<DesignsystemReact />} />
       </Routes>

@@ -18,4 +18,15 @@
       inset: 103px 30px 30px 130px !important;
     }
   }
+  .wmde-markdown {
+    ul li {
+      list-style: disc;
+    }
+    ol li {
+      list-style: decimal;
+    }
+    u {
+      text-decoration: underline;
+    }
+  }
 }
