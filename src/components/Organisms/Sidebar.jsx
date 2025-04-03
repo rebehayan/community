@@ -120,7 +120,7 @@ export default function Sidebar() {
               </li>
             </ul>
           </nav>
-          {/* https://anesta.ancorathemes.com/activity/ */}
+          {/* https://anesta.ancorathemes.com/ */}
         </div>
       </div>
     </div>
