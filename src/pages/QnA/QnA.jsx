@@ -4,6 +4,7 @@ import useUpdateList from "../../util/useUpdateList";
 import Table from "../../components/Molecules/Table";
 import Badge from "../../components/Molecules/Badge";
 import { formatToISODate } from "../../util/dateFormatter";
+import useAuth from "../../util/useAuth";
 
 const tableColmns = [
   { th: "No.", key: "no", width: "10rem" },
@@ -14,6 +15,7 @@ const tableColmns = [
 
 export default function QnA() {
   const navigate = useNavigate();
+  const { authSession } = useAuth();
 
   const { data, error, loading } = useUpdateList("qna");
 
@@ -43,11 +45,13 @@ export default function QnA() {
             </tr>
           ))}
       </Table>
-      <div className="align right mt20">
-        <Button onClick={handleWrite} color="primary" size="base">
-          글쓰기
-        </Button>
-      </div>
+      {authSession && (
+        <div className="align right mt20">
+          <Button onClick={handleWrite} color="primary" size="base">
+            글쓰기
+          </Button>
+        </div>
+      )}
     </>
   );
 }

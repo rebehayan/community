@@ -2,5 +2,46 @@
 
 @layer Page {
   @layer Sub {
+    .body {
+      font-family: "Noto Sans KR", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      font-size: 1.8rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border: 1px solid #ddd;
+      h1,
+      h2 {
+        color: #111;
+      }
+      .section {
+        margin-bottom: 30px;
+      }
+      .footer {
+        font-size: 1.4rem;
+        color: #888;
+        text-align: center;
+        margin-top: 40px;
+      }
+      .button {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff !important;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      .emoji {
+        font-size: 20px;
+        margin-right: 5px;
+      }
+    }
   }
 }

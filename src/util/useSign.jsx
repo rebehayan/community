@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { supabase } from "../lib/supabase";
-import { useNavigate } from "react-router-dom";
 
 export function useGitLogin() {
   const [data, setdata] = useState([]);
@@ -25,15 +24,12 @@ export function useGitLogin() {
 
 export function useLogout() {
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
-  const Logout = async (redirect) => {
+  const Logout = async () => {
     try {
       let { error } = await supabase.auth.signOut();
       if (error) {
         setError(error);
-      } else if (redirect) {
-        navigate(redirect);
       }
     } catch (error) {
       setError(error);

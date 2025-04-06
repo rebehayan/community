@@ -7,6 +7,7 @@ import DesignsystemReact from "./pages/DesignsystemReact";
 import QACreate from "./pages/QnA/QACreate";
 import QnAView from "./pages/QnA/QnAView";
 import Login from "./pages/Sign/Login";
+import NewsLetter from "./pages/Newsletter/NewsLetter";
 
 export default function PageRouter() {
   return (
@@ -16,6 +17,7 @@ export default function PageRouter() {
         <Route path="/qna" element={<QnA />} />
         <Route path="/qna/write" element={<QACreate />} />
         <Route path="/qna/:id" element={<QnAView />} />
+        <Route path="/newsletter" element={<NewsLetter />} />
         <Route path="/designsystem" element={<Designsystem />} />
         <Route path="/designsystem-react" element={<DesignsystemReact />} />
         <Route path="/login" element={<Login />} />

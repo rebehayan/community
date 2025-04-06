@@ -72,7 +72,7 @@ export default function Sidebar() {
           <nav>
             <ul className="nav">
               <li>
-                <Link to="/qna">
+                <Link to="/newsletter">
                   <span>
                     <PiNewspaper />
                   </span>
@@ -120,7 +120,6 @@ export default function Sidebar() {
               </li>
             </ul>
           </nav>
-          {/* https://anesta.ancorathemes.com/ */}
         </div>
       </div>
     </div>

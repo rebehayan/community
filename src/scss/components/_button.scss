@@ -68,6 +68,7 @@ $buttonIcon: (
       box-sizing: border-box;
       text-decoration: none;
       border-radius: rem(100);
+      white-space: nowrap;
       &[class*="ico"] {
         gap: rem(15);
       }

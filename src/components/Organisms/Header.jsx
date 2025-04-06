@@ -2,9 +2,18 @@ import React, { useEffect, useRef } from "react";
 import Logo from "../Molecules/Logo";
 import Search from "./Search";
 import Profile from "./Profile";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../Molecules/Button";
+import useAuth from "../../util/useAuth";
 
 export default function Header() {
   const headerRef = useRef();
+  const { authSession } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
   useEffect(() => {
     const updateSpace = () => {
@@ -23,7 +32,14 @@ export default function Header() {
     <header className="header" ref={headerRef}>
       <Logo />
       <Search />
-      <Profile />
+      {authSession ? (
+        <Profile />
+      ) : (
+        <Button onClick={handleLogin} color="secondary" size="base" type="button">
+          로그인
+        </Button>
+      )}
+      ;
     </header>
   );
 }

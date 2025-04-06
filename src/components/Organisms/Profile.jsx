@@ -6,13 +6,21 @@ import Block from "../Molecules/Block";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown, IoIosLogOut } from "react-icons/io";
 import { LuClipboardPenLine } from "react-icons/lu";
+import { useLogout } from "../../util/useSign";
 
 export default function Profile() {
+  const { Logout } = useLogout();
+
   const handleClick = (e) => {
     e.preventDefault();
     const pop = document.getElementById("profile");
     pop?.showPopover?.();
   };
+
+  const hanldeLogout = async () => {
+    await Logout();
+  };
+
   return (
     <div>
       <a href="" role="button" onClick={handleClick} className="profile">
@@ -29,7 +37,7 @@ export default function Profile() {
             내 정보
           </Text>
         </Link>
-        <Link to="/">
+        <Link to="" onClick={hanldeLogout}>
           <IoIosLogOut />
           <Text tag="span" size="xs">
             로그아웃

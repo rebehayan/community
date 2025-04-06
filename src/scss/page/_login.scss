@@ -1,0 +1,9 @@
+@use "../abstract" as *;
+
+@layer Page {
+  @layer Login {
+    .login {
+      @include position(a, left, 50%, top, 50%, 50);
+    }
+  }
+}
